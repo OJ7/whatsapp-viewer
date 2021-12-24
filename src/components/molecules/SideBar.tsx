@@ -6,11 +6,10 @@ const Section = styled.section`
   background: ${colors.darkPrimary};
   color: #fff;
 
-  min-width: 0;
-  flex: 0 0 250px;
-
-  display: flex;
-  flex-direction: column;
+  width: 0; /* 0 width - change this with JavaScript */
+  z-index: 1; /* Stay on top */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.2s; /* 0.5 second transition effect to slide in the sidepanel */
 `;
 
 const Header = styled.header`
@@ -33,7 +32,7 @@ interface Props {
 
 export default function SideBar({ title, children }: Props): JSX.Element {
   return (
-    <Section>
+    <Section id="mySidepanel">
       <Header>
         <HeaderTitle>{title}</HeaderTitle>
       </Header>

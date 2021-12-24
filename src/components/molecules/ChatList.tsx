@@ -72,11 +72,16 @@ interface Props {
 export default function ChatList(props: Props): JSX.Element {
   const { chats, activeChatId } = props;
 
+  /* Set the width of the sidebar to 0 (hide it) */
+  const closeNav = () => {
+    (document as any).getElementById("mySidepanel").style.width = "0";
+  };
+
   return (
     <SideBar title="Chats">
       <List>
         {chats.map((chat) => (
-          <li key={chat.id}>
+          <li key={chat.id} onClick={closeNav}>
             <Link href={`/chats/${chat.id}`} passHref>
               <ItemLink className={chat.id === activeChatId ? "active" : ""}>
                 {chat.subject ||

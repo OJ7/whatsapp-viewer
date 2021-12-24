@@ -24,6 +24,10 @@ export const Header = styled.header`
   border-bottom: 2px solid ${colors.secondary};
 `;
 
+export const BackButton = styled.button`
+  float: left;
+`;
+
 export const Messages = styled.div`
   flex: 1;
   padding: 10px 40px;

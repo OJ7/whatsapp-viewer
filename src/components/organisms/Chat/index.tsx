@@ -8,6 +8,7 @@ import Loading from "../../molecules/Loading";
 import ChatInfo from "../../molecules/ChatInfo";
 import Media, { MediaType } from "../../molecules/Media";
 import {
+  BackButton,
   Header,
   Message,
   MessageAuthor,
@@ -200,13 +201,20 @@ export default function Chat(props: Props): JSX.Element {
   const subject =
     chat.subject || chat.user?.displayName || chat.user?.name || chat.jid;
 
+  const openNav = () => {
+    (document as any).getElementById("mySidepanel").style.width = "250px";
+  };
+
   return (
     <React.Fragment>
       <Head>
         <title>{subject}</title>
       </Head>
       <Section>
-        <Header title={subject}>{subject}</Header>
+        <Header title={subject}>
+          <BackButton onClick={openNav}>{"<"}</BackButton>
+          {subject}
+        </Header>
         <Messages ref={messageContainer} onScroll={onMessagesScroll}>
           {messages.map((message) => (
             <MessageWrapper
